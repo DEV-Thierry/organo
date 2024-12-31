@@ -3,6 +3,7 @@ import './App.css';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 import { Time } from './components/Time/Time';
+import { Rodape } from './components/Rodape/Rodape';
 
 function App() {
   const times =[
@@ -62,7 +63,7 @@ function App() {
                     />
                 )}
 
-      
+      <Rodape/>
     </div>
   );
 }
