@@ -5,15 +5,6 @@ import { Botao } from "../Botao/Botao";
 import { useState } from "react";
 
 export const Formulario = (props) => {
-  const itens = [
-    'Programação',
-    'Front-End',
-    'Data Science',
-    'Devops',
-    'UX e Design',
-    'Mobile',
-    'Inovacao e Gestao'
-  ]
 
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('')
@@ -59,7 +50,7 @@ export const Formulario = (props) => {
 
         <ListaSuspensa 
             label="Time" 
-            itens={itens}
+            itens={props.times}
             valor={time}
             aoAlterado={valor => setTime(valor)}
             />
