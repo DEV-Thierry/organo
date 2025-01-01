@@ -61,6 +61,10 @@ function App() {
     }))
   }
 
+  function cadastrarTime(novoTime){
+    setTimes([...times, {...novoTime, id: uuidv4() }])
+  }
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
   }
@@ -68,7 +72,12 @@ function App() {
   return (
     <div className="App container">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador=> aoNovoColaboradorAdicionado(colaborador)} />
+      <Formulario
+        cadastrarTime ={cadastrarTime}
+        times={times.map(time => time.nome)} 
+        aoColaboradorCadastrado={colaborador=> 
+          aoNovoColaboradorAdicionado(colaborador)} 
+      />
       {times.map((time, indice) => 
         <Time 
           key={indice} 
@@ -76,7 +85,7 @@ function App() {
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
           mudarCor={mudarCorTime}
-          />
+        />
       )}
 
       <Rodape/>
