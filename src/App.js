@@ -65,6 +65,16 @@ function App() {
     setTimes([...times, {...novoTime, id: uuidv4() }])
   }
 
+  function resolverFavorito(id){
+    setColaboradores(colaboradores.map(colaborador => {
+      if(colaborador.id === id){
+        colaborador.favorito = !colaborador.favorito
+      }
+      return colaborador
+    }))
+  }
+
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
   }
@@ -83,8 +93,9 @@ function App() {
           key={indice} 
           time={time}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-          aoDeletar={deletarColaborador}
           mudarCor={mudarCorTime}
+          aoDeletar={deletarColaborador}
+          aoFavoritar={resolverFavorito}
         />
       )}
 

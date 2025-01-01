@@ -21,7 +21,8 @@ export const Formulario = (props) => {
       nome,
       cargo,
       imagem,
-      time
+      time,
+      favorito: false
     })
 
     setNome('');
