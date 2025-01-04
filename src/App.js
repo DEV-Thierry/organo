@@ -77,33 +77,33 @@ function App() {
     },
     {
       id: uuidv4(),
-      nome: 'Paulo Silveira',
+      nome: 'Marcelio Junior',
       cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
+      imagem: 'https://github.com/rhesker.png',
       time: 'Programação',
       favorito: false
     },
     {
       id: uuidv4(),
-      nome: 'Paulo Silveira',
+      nome: 'Marcelio Junior',
       cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
+      imagem: 'https://github.com/rhesker.png',
       time: 'Front-End',
       favorito: false
     },
     {
       id: uuidv4(),
-      nome: 'Paulo Silveira',
+      nome: 'Marcelio Junior',
       cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
+      imagem: 'https://github.com/rhesker.png',
       time: 'Data Science',
       favorito: false
     },
     {
       id: uuidv4(),
-      nome: 'Paulo Silveira',
+      nome: 'Marcelio Junior',
       cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
+      imagem: 'https://github.com/rhesker.png',
       time: 'Devops',
       favorito: false
     },
@@ -178,141 +178,10 @@ function App() {
       cor: '#FF8A29'
     },
   ])
-  const [colaboradores, setColaboradores] = useState([
-    {
-      id: uuidv4(),
-      nome: 'Henri Dantas',
-      cargo: 'Desenvolvedor back-end',
-      imagem: 'https://github.com/HenriDantas.png',
-      time: 'Programação',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Henri Dantas',
-      cargo: 'Desenvolvedor back-end',
-      imagem: 'https://github.com/HenriDantas.png',
-      time: 'Front-End',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Henri Dantas',
-      cargo: 'Desenvolvedor back-end',
-      imagem: 'https://github.com/HenriDantas.png',
-      time: 'Data Science',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Henri Dantas',
-      cargo: 'Desenvolvedor back-end',
-      imagem: 'https://github.com/HenriDantas.png',
-      time: 'Devops',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Thierry',
-      cargo: 'Desenvolvedor Front-end',
-      imagem: 'https://github.com/DEV-Thierry.png',
-      time: 'Programação',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Thierry',
-      cargo: 'Desenvolvedor Front-end',
-      imagem: 'https://github.com/DEV-Thierry.png',
-      time: 'Front-End',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Thierry',
-      cargo: 'Desenvolvedor Front-end',
-      imagem: 'https://github.com/DEV-Thierry.png',
-      time: 'Data Science',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Thierry',
-      cargo: 'Desenvolvedor Front-end',
-      imagem: 'https://github.com/DEV-Thierry.png',
-      time: 'Devops',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Paulo Silveira',
-      cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
-      time: 'Programação',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Paulo Silveira',
-      cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
-      time: 'Front-End',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Paulo Silveira',
-      cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
-      time: 'Data Science',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Paulo Silveira',
-      cargo: 'CEO',
-      imagem: 'https://github.com/peas.png',
-      time: 'Devops',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Vinicius Neves',
-      cargo: 'Tech Lead',
-      imagem: 'https://github.com/Viniciusneves.png',
-      time: 'Programação',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Vinicius Neves',
-      cargo: 'Tech Lead',
-      imagem: 'https://github.com/Viniciusneves.png',
-      time: 'Front-End',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Vinicius Neves',
-      cargo: 'Tech Lead',
-      imagem: 'https://github.com/Viniciusneves.png',
-      time: 'Data Science',
-      favorito: false
-    },
-    {
-      id: uuidv4(),
-      nome: 'Vinicius Neves',
-      cargo: 'Tech Lead',
-      imagem: 'https://github.com/Viniciusneves.png',
-      time: 'Devops',
-      favorito: false
-    },
-  ])
 
 
   function deletarColaborador(id){
     console.log("deletando colaborador: ", id)
-    // setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
     dispatchColaboradores(
       {
         type: DELETAR_COLABORADOR, 
@@ -335,12 +204,6 @@ function App() {
   }
 
   function resolverFavorito(id){
-    // setColaboradores(colaboradores.map(colaborador => {
-    //   if(colaborador.id === id){
-    //     colaborador.favorito = !colaborador.favorito
-    //   }
-    //   return colaborador
-    // }))
 
     dispatchColaboradores({
       type: FAVORITAR_COLABORADOR,
@@ -350,7 +213,6 @@ function App() {
 
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    // setColaboradores([...colaboradores, colaborador])
     dispatchColaboradores({
       type: ADICIONAR_COLABORADOR,
       colaborador
