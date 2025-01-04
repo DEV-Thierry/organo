@@ -1,12 +1,145 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 import { Time } from './components/Time/Time';
 import { Rodape } from './components/Rodape/Rodape';
 import {v4 as uuidv4} from 'uuid'
+import  ReducerColaboradores, { FAVORITAR_COLABORADOR,  ADICIONAR_COLABORADOR, DELETAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
+// import  {ADICIONAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
 
 function App() {
+
+  const [empregados, dispatchColaboradores] = useReducer(ReducerColaboradores, [
+    {
+      id: uuidv4(),
+      nome: 'Henri Dantas',
+      cargo: 'Desenvolvedor back-end',
+      imagem: 'https://github.com/HenriDantas.png',
+      time: 'Programação',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Henri Dantas',
+      cargo: 'Desenvolvedor back-end',
+      imagem: 'https://github.com/HenriDantas.png',
+      time: 'Front-End',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Henri Dantas',
+      cargo: 'Desenvolvedor back-end',
+      imagem: 'https://github.com/HenriDantas.png',
+      time: 'Data Science',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Henri Dantas',
+      cargo: 'Desenvolvedor back-end',
+      imagem: 'https://github.com/HenriDantas.png',
+      time: 'Devops',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Thierry',
+      cargo: 'Desenvolvedor Front-end',
+      imagem: 'https://github.com/DEV-Thierry.png',
+      time: 'Programação',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Thierry',
+      cargo: 'Desenvolvedor Front-end',
+      imagem: 'https://github.com/DEV-Thierry.png',
+      time: 'Front-End',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Thierry',
+      cargo: 'Desenvolvedor Front-end',
+      imagem: 'https://github.com/DEV-Thierry.png',
+      time: 'Data Science',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Thierry',
+      cargo: 'Desenvolvedor Front-end',
+      imagem: 'https://github.com/DEV-Thierry.png',
+      time: 'Devops',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Paulo Silveira',
+      cargo: 'CEO',
+      imagem: 'https://github.com/peas.png',
+      time: 'Programação',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Paulo Silveira',
+      cargo: 'CEO',
+      imagem: 'https://github.com/peas.png',
+      time: 'Front-End',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Paulo Silveira',
+      cargo: 'CEO',
+      imagem: 'https://github.com/peas.png',
+      time: 'Data Science',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Paulo Silveira',
+      cargo: 'CEO',
+      imagem: 'https://github.com/peas.png',
+      time: 'Devops',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Vinicius Neves',
+      cargo: 'Tech Lead',
+      imagem: 'https://github.com/Viniciusneves.png',
+      time: 'Programação',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Vinicius Neves',
+      cargo: 'Tech Lead',
+      imagem: 'https://github.com/Viniciusneves.png',
+      time: 'Front-End',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Vinicius Neves',
+      cargo: 'Tech Lead',
+      imagem: 'https://github.com/Viniciusneves.png',
+      time: 'Data Science',
+      favorito: false
+    },
+    {
+      id: uuidv4(),
+      nome: 'Vinicius Neves',
+      cargo: 'Tech Lead',
+      imagem: 'https://github.com/Viniciusneves.png',
+      time: 'Devops',
+      favorito: false
+    },
+  ])
   const [times, setTimes] = useState([
     {
       id: uuidv4(),
@@ -179,7 +312,13 @@ function App() {
 
   function deletarColaborador(id){
     console.log("deletando colaborador: ", id)
-    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+    // setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+    dispatchColaboradores(
+      {
+        type: DELETAR_COLABORADOR, 
+        id
+      }
+    )
   }
 
   function mudarCorTime(cor, id){
@@ -196,17 +335,26 @@ function App() {
   }
 
   function resolverFavorito(id){
-    setColaboradores(colaboradores.map(colaborador => {
-      if(colaborador.id === id){
-        colaborador.favorito = !colaborador.favorito
-      }
-      return colaborador
-    }))
+    // setColaboradores(colaboradores.map(colaborador => {
+    //   if(colaborador.id === id){
+    //     colaborador.favorito = !colaborador.favorito
+    //   }
+    //   return colaborador
+    // }))
+
+    dispatchColaboradores({
+      type: FAVORITAR_COLABORADOR,
+      id
+    })
   }
 
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador])
+    // setColaboradores([...colaboradores, colaborador])
+    dispatchColaboradores({
+      type: ADICIONAR_COLABORADOR,
+      colaborador
+    })
   }
 
   return (
@@ -222,7 +370,7 @@ function App() {
         <Time 
           key={indice} 
           time={time}
-          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+          colaboradores={empregados.filter(colaborador => colaborador.time === time.nome)}
           mudarCor={mudarCorTime}
           aoDeletar={deletarColaborador}
           aoFavoritar={resolverFavorito}
