@@ -1,6 +1,6 @@
 import "./Formulario.css";
 import Campo from "../Campo"
-import { ListaSuspensa } from "../ListaSuspensa/ListaSuspensa";
+import { ListaSuspensa } from "../ListaSuspensa";
 import { Botao } from "../Botao/Botao";
 import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
@@ -60,7 +60,7 @@ export const Formulario = (props) => {
 
         <ListaSuspensa 
             label="Time" 
-            itens={props.times}
+            times={props.times}
             valor={time}
             aoAlterado={valor => setTime(valor)}
           />

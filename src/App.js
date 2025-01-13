@@ -2,11 +2,13 @@ import { useReducer, useState } from 'react';
 import './App.css';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
-import { Time } from './components/Time/Time';
-import { Rodape } from './components/Rodape/Rodape';
+import  Time  from './components/Time';
+import  Rodape  from './components/Rodape';
 import {v4 as uuidv4} from 'uuid'
 import  ReducerColaboradores, { FAVORITAR_COLABORADOR,  ADICIONAR_COLABORADOR, DELETAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
 // import  {ADICIONAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
+
+
 
 function App() {
 

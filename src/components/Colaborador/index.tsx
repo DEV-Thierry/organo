@@ -1,8 +1,17 @@
 import "./Colaborador.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
+import React from 'react'
+import { IColaborador } from "../../Shared/interfaces/IColaborador";
 
-export const Colaborador = ({colaborador, corFundo, aoDeletar, aoFavoritar}) => {
+interface ColaboradorProps{
+    colaborador: IColaborador,
+    corFundo: string,
+    aoDeletar: (colaboradorId: string) => void,
+    aoFavoritar: (colaboradorId: string) => void
+}
+
+export const Colaborador = ({colaborador, corFundo, aoDeletar, aoFavoritar}: ColaboradorProps) => {
     function favoritar(){
         aoFavoritar(colaborador.id)
     }
@@ -39,3 +48,5 @@ export const Colaborador = ({colaborador, corFundo, aoDeletar, aoFavoritar}) => 
         </div>
     );
 };
+
+export default Colaborador;
