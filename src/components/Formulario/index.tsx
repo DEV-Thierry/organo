@@ -4,8 +4,22 @@ import { ListaSuspensa } from "../ListaSuspensa";
 import { Botao } from "../Botao/Botao";
 import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
+import React from 'react'
+import { IColaborador } from "../../Shared/interfaces/IColaborador";
 
-export const Formulario = (props) => {
+interface INovoTime{
+  nome: string,
+  cor: string
+}
+
+interface FormularioProps{
+  aoColaboradorCadastrado: (colaborador:IColaborador) => void,
+  timesNames: string[],
+  cadastrarTime: (novoTime: INovoTime) => void
+}
+
+
+export const Formulario = ({aoColaboradorCadastrado, timesNames, cadastrarTime }: FormularioProps) => {
 
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('')
@@ -14,9 +28,9 @@ export const Formulario = (props) => {
   const [nomeTime, setNomeTime] = useState('')
   const [corTime, setCorTime] = useState('')
 
-  const aoSalvar = (event) =>{
+  const aoSalvar = (event: React.FormEvent<HTMLFormElement>) =>{
     event.preventDefault();
-    props.aoColaboradorCadastrado({
+    aoColaboradorCadastrado({
       id: uuidv4(),
       nome,
       cargo,
@@ -59,8 +73,9 @@ export const Formulario = (props) => {
           />
 
         <ListaSuspensa 
+            required= {true}
             label="Time" 
-            times={props.times}
+            timesNames={timesNames}
             valor={time}
             aoAlterado={valor => setTime(valor)}
           />
@@ -71,7 +86,7 @@ export const Formulario = (props) => {
 
       <form onSubmit={(evento => {
         evento.preventDefault()
-        props.cadastrarTime({nome: nomeTime, cor: corTime})
+        cadastrarTime({nome: nomeTime, cor: corTime})
       })}>
         <h2>Preencha os dados para criar um novo time</h2>
         <Campo 
@@ -97,3 +112,5 @@ export const Formulario = (props) => {
     </section>
   );
 };
+
+export default Formulario;

@@ -2,7 +2,7 @@ import './Campo.css';
 import React from 'react'
 
 interface CampoProps{
-    type: string,
+    type?: string,
     aoAlterado: (valor: string) => void,
     label: string,
     valor: any,
