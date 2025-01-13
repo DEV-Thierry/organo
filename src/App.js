@@ -221,7 +221,7 @@ function App() {
 
   return (
     <div className="App container">
-      <Banner />
+      <Banner enderecoImagem="/assets/banner.png"/>
       <Formulario
         cadastrarTime ={cadastrarTime}
         times={times.map(time => time.nome)} 
