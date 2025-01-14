@@ -3,9 +3,11 @@ import './App.css';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 import Time  from './components/Time';
-import Rodape  from './components/Rodape';
-import {v4 as uuidv4} from 'uuid'
+import {v4 as uuidv4} from 'uuid';
 import ReducerColaboradores, { FAVORITAR_COLABORADOR,  ADICIONAR_COLABORADOR, DELETAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
+import { INovoTime } from './Shared/interfaces/INovoTime';
+import { IColaborador } from './Shared/interfaces/IColaborador';
+import Rodape from './components/Rodape';
 // import  {ADICIONAR_COLABORADOR}  from './Helpers/ReducerColaboradores';
 
 
@@ -182,7 +184,7 @@ function App() {
   ])
 
 
-  function deletarColaborador(id){
+  function deletarColaborador(id: string){
     console.log("deletando colaborador: ", id)
     dispatchColaboradores(
       {
@@ -192,7 +194,7 @@ function App() {
     )
   }
 
-  function mudarCorTime(cor, id){
+  function mudarCorTime(cor: string, id: string){
     setTimes(times.map(time => {
       if(time.id === id){
         time.cor = cor;
@@ -201,11 +203,11 @@ function App() {
     }))
   }
 
-  function cadastrarTime(novoTime){
+  function cadastrarTime(novoTime: INovoTime){
     setTimes([...times, {...novoTime, id: uuidv4() }])
   }
 
-  function resolverFavorito(id){
+  function resolverFavorito(id: string){
 
     dispatchColaboradores({
       type: FAVORITAR_COLABORADOR,
@@ -214,7 +216,7 @@ function App() {
   }
 
 
-  const aoNovoColaboradorAdicionado = (colaborador) => {
+  const aoNovoColaboradorAdicionado = (colaborador: IColaborador) => {
     dispatchColaboradores({
       type: ADICIONAR_COLABORADOR,
       colaborador

@@ -1,7 +1,6 @@
 import { Colaborador } from "../Colaborador";
 import hexToRgba from "hex-to-rgba";
 import "./Time.css";
-import React from 'react'
 import { IColaborador } from "../../Shared/interfaces/IColaborador";
 import { ITime } from "../../Shared/interfaces/ITime";
 
@@ -9,9 +8,9 @@ import { ITime } from "../../Shared/interfaces/ITime";
 interface TimeProps{
     time: ITime,
     colaboradores: IColaborador[],
-    aoDeletar: () => void,
-    mudarCor: (cor:string, timeId: string) => ITime,
-    aoFavoritar: () => void
+    aoDeletar: (colaboradorId: string) => void,
+    mudarCor: (cor:string, timeId: string) => void,
+    aoFavoritar: (colaboradorId: string) => void
 }
 
 const Time = ({time, colaboradores, aoDeletar, mudarCor, aoFavoritar} : TimeProps) => {

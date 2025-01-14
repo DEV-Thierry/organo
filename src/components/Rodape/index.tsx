@@ -1,6 +1,5 @@
 import "./Rodape.css";
-
-export const Rodape = () => {
+const Rodape = () => {
     return (
         <footer className="footer"> 
             <section> 

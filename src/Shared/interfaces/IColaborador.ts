@@ -1,6 +1,3 @@
-import { ITime } from "./ITime"
-
-
 export interface IColaborador{
     id: string
     nome: string, 

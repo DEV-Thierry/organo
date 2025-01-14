@@ -1,8 +1,10 @@
+import { IColaborador } from "../Shared/interfaces/IColaborador";
+
 export const ADICIONAR_COLABORADOR = 'ADICIONAR_COLABORADOR';
 export const DELETAR_COLABORADOR = 'DELETAR_COLABORADOR';
 export const FAVORITAR_COLABORADOR = 'FAVORITAR_COLABORADOR';
 
-const ReducerColaboradores = (state, action) => {
+const ReducerColaboradores = (state:IColaborador[], action: any) => {
     switch (action.type) {
         case ADICIONAR_COLABORADOR:
             return [...state, action.colaborador];

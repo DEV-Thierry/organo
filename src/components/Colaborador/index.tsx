@@ -1,7 +1,6 @@
 import "./Colaborador.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import React from 'react'
 import { IColaborador } from "../../Shared/interfaces/IColaborador";
 
 interface ColaboradorProps{

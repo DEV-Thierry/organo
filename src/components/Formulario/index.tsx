@@ -6,11 +6,7 @@ import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
 import React from 'react'
 import { IColaborador } from "../../Shared/interfaces/IColaborador";
-
-interface INovoTime{
-  nome: string,
-  cor: string
-}
+import { INovoTime } from "../../Shared/interfaces/INovoTime";
 
 interface FormularioProps{
   aoColaboradorCadastrado: (colaborador:IColaborador) => void,
